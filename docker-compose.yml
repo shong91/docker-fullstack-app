@@ -27,6 +27,12 @@ services:
     volumes:
       - /app/node_modules
       - ./backend:/app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: shong911
+      MYSQL_DATABASE: myapp
+      MYSQL_PORT: 3306
 
   # chapter09: RDS 를 이용할 예정이므로 mysql 관련 내용 (& folder) 삭제
   # mysql:
