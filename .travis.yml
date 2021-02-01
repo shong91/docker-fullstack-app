@@ -18,12 +18,12 @@ script:
 after_success:
   - docker build -t hhhongso/docker-frontend ./frontend 
   - docker build -t hhhongso/docker-backend ./backend 
-  - docker build -t hhhongso/docker-ngind ./nginx
+  - docker build -t hhhongso/docker-nginx ./nginx
   
   # 도커 허브에 빌드된 파일을 넣어주기 위해 도커 허브에 로그인  
   - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
 
   # 빌드된 이미지를 도커허브에 보내주기
-  - docker push hhhongso/docker-fronted
+  - docker push hhhongso/docker-frontend
   - docker push hhhongso/docker-backend
   - docker push hhhongso/docker-nginx
