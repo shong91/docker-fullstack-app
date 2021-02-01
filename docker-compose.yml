@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+  frontend:
+    build:
+      dockerfile: Dockerfile.dev 
+      context: ./frontend
+    # 코드 수정 후 다시 build 하는 것 없이 수정된 코드가 바로 반영될 수 있게 volume 을 이용한다. 
+    volumes: 
+      - /app/node_modules
+      - ./frontend:/app
+    stdin_open: true
+    
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - "3000:80"
+
+  backend:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./backend
+    container_name: app_backend
+    volumes:
+      - /app/node_modules
+      - ./backend:/app
+
+  # chapter09: RDS 를 이용할 예정이므로 mysql 관련 내용 (& folder) 삭제
+  # mysql:
+  #   build: ./mysql
+  #   restart: unless-stopped
+  #   container_name: app_mysql
+  #   ports:
+  #     - "3306:3306"
+  #   volumes: 
+  #   # docker-volume
+  #     - ./mysql/mysql_data:/var/lib/mysql
+  #     - ./mysql/sqls/:/docker-entrypoint-initdb.d/
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: shong91
+  #     MYSQL_DATABASE: myapp
+
+
