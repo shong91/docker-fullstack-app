@@ -1,3 +1,8 @@
+/*
+    Dockerrun.aws.json 파일은 Docker 컨테이너 세트를 Elastic Beanstalk 애플리케이션으로 배포하는 방법을 설명하는 JSON 파일입니다. 
+    Dockerrun.aws.json 파일을 멀티컨테이너 Docker 환경에 사용할 수 있습니다.
+*/
+
 {
     "AWSEBDockerrunVersion": 2,
     "containerDefinitions": [

@@ -1,5 +1,6 @@
 const mysql = require("mysql");
 
+//  docker-compose.yml > backend.environment 의 정보 반영
 const pool = mysql.createPool({
     connectionLimit: 10,
     host: process.env.MYSQL_HOST,

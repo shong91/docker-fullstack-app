@@ -27,6 +27,7 @@ services:
     volumes:
       - /app/node_modules
       - ./backend:/app
+    # RDS 정보 
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: root
